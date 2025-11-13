@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -51,6 +52,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // CRUD for restaurants (admin only)
     Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)->except(['index', 'show']);
+});
+
+// Temporary route for seeding database on deployment
+Route::get('/seed-database', function () {
+    try {
+        Artisan::call('db:seed');
+        return 'Database seeded successfully! ' . Artisan::output();
+    } catch (Exception $e) {
+        return 'Seeding failed: ' . $e->getMessage();
+    }
 });
 
 require __DIR__.'/settings.php';

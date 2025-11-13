@@ -61,7 +61,7 @@ class DashboardController extends Controller
 
         // Get orders by month for the current year
         $ordersByMonth = Order::select(
-            DB::raw('MONTH(created_at) as month'),
+            DB::raw('CAST(strftime("%m", created_at) AS INTEGER) as month'),
             DB::raw('COUNT(*) as count')
         )
         ->whereYear('created_at', date('Y'))
