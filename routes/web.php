@@ -98,6 +98,20 @@ Route::get('/create-admin-user', function () {
     return 'Admin user created successfully! Email: admin@restaurant.com, Password: password';
 });
 
+// Application status route
+Route::get('/app-status', function () {
+    return view('app-status', [
+        'users' => \App\Models\User::all(['name', 'email', 'role', 'created_at']),
+        'restaurants' => \App\Models\Restaurant::count(),
+        'messages' => \App\Models\Message::count(),
+        'routes' => [
+            'admin' => route('admin.dashboard', [], false),
+            'login' => route('login', [], false),
+            'dashboard' => route('dashboard', [], false),
+        ]
+    ]);
+});
+
 // Temporary route for seeding database on deployment
 Route::get('/seed-database', function () {
     try {
