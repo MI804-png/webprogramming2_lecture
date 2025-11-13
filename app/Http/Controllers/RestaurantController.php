@@ -54,13 +54,18 @@ class RestaurantController extends Controller
             'email' => 'nullable|email|max:255',
             'description' => 'nullable|string',
             'cuisine_type' => 'required|string|max:100',
+            'rating' => 'nullable|numeric|min:1|max:5',
+            'price_range' => 'nullable|string|max:10',
+            'opening_hours' => 'nullable|string|max:255',
+            'website' => 'nullable|url|max:255',
+            'is_active' => 'boolean',
             'image_url' => 'nullable|url',
         ]);
 
         $restaurant = Restaurant::create($validated);
 
-        return redirect()->route('restaurants.show', $restaurant)
-            ->with('success', 'Restaurant created successfully.');
+        return redirect()->route('restaurants.index')
+            ->with('success', 'Restaurant created successfully!');
     }
 
     /**

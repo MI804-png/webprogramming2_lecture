@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react'
-import AppLayout from '@/layouts/AppLayout'
+import AppLayout from '@/layouts/app-layout'
 
 interface Message {
     id: number
@@ -21,24 +21,18 @@ export default function MessagesIndex({ messages }: Props) {
     }
 
     return (
-        <AppLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Messages
-                </h2>
-            }
-        >
+        <AppLayout>
             <Head title="Messages" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-lg rounded-lg">
+            <div className="container mx-auto py-8 px-4">
+                <div className="max-w-4xl mx-auto">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
                         <div className="p-6">
                             <div className="flex justify-between items-center mb-6">
-                                <h3 className="text-2xl font-bold text-gray-900">
+                                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                                     Contact Messages
-                                </h3>
-                                <span className="text-sm text-gray-500">
+                                </h1>
+                                <span className="text-sm text-gray-500 dark:text-gray-400">
                                     {messages.length} total messages
                                 </span>
                             </div>

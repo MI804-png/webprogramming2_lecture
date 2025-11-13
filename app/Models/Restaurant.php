@@ -8,7 +8,8 @@ class Restaurant extends Model
 {
     protected $fillable = [
         'name', 'address', 'phone', 'email', 'description', 
-        'cuisine_type', 'rating', 'image_url', 'is_active'
+        'cuisine_type', 'rating', 'price_range', 'opening_hours',
+        'website', 'image_url', 'is_active'
     ];
 
     protected $casts = [

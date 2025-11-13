@@ -1,5 +1,7 @@
 import { Head, Link } from '@inertiajs/react'
-import AppLayout from '@/layouts/AppLayout'
+import { Plus } from 'lucide-react'
+import AppLayout from '@/layouts/app-layout'
+import { Button } from '@/components/ui/button'
 
 interface Restaurant {
     id: number
@@ -10,33 +12,69 @@ interface Restaurant {
     description: string | null
     cuisine_type: string
     rating: number
+    price_range: string | null
     image_url: string | null
     is_active: boolean
 }
 
 interface Props {
     restaurants: Restaurant[]
+    auth: {
+        user: {
+            role: string
+        }
+    }
 }
 
-export default function RestaurantsIndex({ restaurants }: Props) {
+export default function RestaurantsIndex({ restaurants, auth }: Props) {
+    const isAdmin = auth?.user?.role === 'admin';
+
     return (
-        <AppLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Our Restaurants
-                </h2>
-            }
-        >
+        <AppLayout>
             <Head title="Restaurants" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {restaurants.map((restaurant) => (
-                            <div
-                                key={restaurant.id}
-                                className="bg-white overflow-hidden shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-                            >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                            Our Restaurants
+                        </h1>
+                        <p className="text-gray-600 dark:text-gray-400 mt-2">
+                            Discover amazing restaurants and cuisines
+                        </p>
+                    </div>
+                    
+                    {isAdmin && (
+                        <Link href="/restaurants/create">
+                            <Button className="flex items-center gap-2">
+                                <Plus className="h-4 w-4" />
+                                Add Restaurant
+                            </Button>
+                        </Link>
+                    )}
+                </div>
+
+                <div className="max-w-7xl mx-auto">
+                    {restaurants.length === 0 ? (
+                        <div className="text-center py-12">
+                            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+                                No restaurants found
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400 mb-4">
+                                There are no restaurants available at the moment.
+                            </p>
+                            {isAdmin && (
+                                <Link href="/restaurants/create">
+                                    <Button>Add First Restaurant</Button>
+                                </Link>
+                            )}
+                        </div>                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {restaurants.map((restaurant) => (
+                                <div
+                                    key={restaurant.id}
+                                    className="bg-white overflow-hidden shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
+                                >
                                 <div className="h-48 bg-gray-200">
                                     {restaurant.image_url ? (
                                         <img
@@ -93,19 +131,7 @@ export default function RestaurantsIndex({ restaurants }: Props) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                    
-                    {restaurants.length === 0 && (
-                        <div className="text-center py-12">
-                            <div className="text-gray-400 mb-4">
-                                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                                </svg>
-                            </div>
-                            <h3 className="text-lg font-medium text-gray-900 mb-2">No restaurants found</h3>
-                            <p className="text-gray-500">Check back later for new restaurants!</p>
+                            </div>                            ))}
                         </div>
                     )}
                 </div>
