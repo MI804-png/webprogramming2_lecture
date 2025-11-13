@@ -29,6 +29,31 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
         ]);
 
+        // Create sample messages
+        \App\Models\Message::create([
+            'name' => 'John Smith',
+            'email' => 'john@example.com',
+            'subject' => 'Question about reservations',
+            'message' => 'Hi, I would like to know if you accept reservations for parties of 8 or more. We are planning a birthday celebration next weekend.',
+            'is_read' => false,
+        ]);
+
+        \App\Models\Message::create([
+            'name' => 'Sarah Johnson',
+            'email' => 'sarah.johnson@email.com',
+            'subject' => 'Catering Services',
+            'message' => 'Hello! I am interested in your catering services for a corporate event. Could you please provide information about your menu options and pricing for 50 people?',
+            'is_read' => true,
+        ]);
+
+        \App\Models\Message::create([
+            'name' => 'Mike Wilson',
+            'email' => 'mike.wilson@company.com',
+            'subject' => 'Dietary Restrictions',
+            'message' => 'Do you have options for people with gluten sensitivity and vegan dietary preferences? I am planning to visit with my family next week.',
+            'is_read' => false,
+        ]);
+
         // Seed restaurants and dishes
         $this->call([
             RestaurantSeeder::class,

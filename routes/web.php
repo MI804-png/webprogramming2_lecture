@@ -54,6 +54,25 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::resource('restaurants', App\Http\Controllers\RestaurantController::class)->except(['index', 'show']);
 });
 
+// Debug route for admin testing
+Route::get('/debug-admin', function () {
+    $user = auth()->user();
+    return response()->json([
+        'authenticated' => auth()->check(),
+        'user' => $user ? [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->role ?? 'no role set',
+        ] : null,
+        'is_admin' => $user ? ($user->role === 'admin') : false,
+        'routes' => [
+            'admin_exists' => \Route::has('admin.dashboard'),
+            'admin_url' => route('admin.dashboard', [], false),
+        ]
+    ]);
+});
+
 // Temporary route for seeding database on deployment
 Route::get('/seed-database', function () {
     try {
