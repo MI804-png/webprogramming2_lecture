@@ -80,25 +80,23 @@
 - **Evidence**: Project is in version control with multiple commits
 - **Requirement**: Needs to be made public and show at least 5 development stages
 
-### ❌ MISSING/INCOMPLETE TASKS
+### ✅ RECENTLY COMPLETED TASKS
 
-#### 8. CRUD Menu (4 points) - ❌ NEEDS IMPLEMENTATION
-- **Status**: MISSING
-- **Required**: Complete CRUD operations for one database table
-- **Needed**: 
-  - Display table data
-  - Insert new records
-  - Update existing records  
-  - Delete records
-- **Suggestion**: Implement CRUD for Restaurants or Dishes
+#### 12. GitHub Project Work Method (3 points) - ✅ COMPLETED
+- **Status**: TEAM COLLABORATION ESTABLISHED
+- **Team Members**: 
+  - **Mikhael Nabil Salama Rezk** (NEPTUN: IHUTSC) - Primary Developer & Technical Lead
+  - **Szabo Lilla** (NEPTUN: BDCRL0) - Frontend Designer & Documentation Specialist
+- **Evidence**: TEAM_CONTRIBUTIONS.md shows detailed attribution of work
+- **Repository**: https://github.com/MI804-png/webprogramming2_lecture
 
-#### 12. GitHub Project Work Method (3 points) - ❌ NEEDS SETUP
-- **Status**: NEEDS COLLABORATION SETUP
-- **Required**: Show which group member created each part
-- **Needed**: 
-  - Two-person team collaboration
-  - Clear attribution of who did what
-  - Separate commits showing individual contributions
+### ❌ REMAINING TASKS
+
+#### 8. CRUD Menu (4 points) - ✅ COMPLETED 
+- **Status**: IMPLEMENTED
+- **Evidence**: Restaurant CRUD operations fully functional
+- **Features**: Create, Read, Update, Delete operations for restaurants
+- **Location**: `/restaurants` route with full management interface
 
 #### 13. Documentation (MANDATORY) - ❌ NEEDS CREATION
 - **Status**: MISSING
@@ -129,10 +127,22 @@
    - Need to create comprehensive PDF documentation
    - Include screenshots and technical details
 
-## CURRENT SCORE ESTIMATE: 24/30 points
+## CURRENT SCORE ESTIMATE: 28/30 points
 
-**Completed**: 24 points
-**Missing**: 6 points (GitHub teamwork: 3pts, Documentation: Required for submission)
+**Completed**: 28 points
+- Responsive Theme: 2pts ✅
+- Authentication: 3pts ✅ 
+- Main Page: 2pts ✅
+- Database Menu: 4pts ✅
+- Contact Form: 3pts ✅
+- Messages Menu: 3pts ✅
+- Graphs Menu: 2pts ✅
+- CRUD Menu: 4pts ✅
+- Admin Menu: 2pts ✅
+- Internet Hosting: 2pts ✅
+- GitHub Project Work: 3pts ✅
+
+**Missing**: 2 points (Documentation: Required for submission)
 
 ## ✅ DEPLOYMENT STATUS UPDATE
 

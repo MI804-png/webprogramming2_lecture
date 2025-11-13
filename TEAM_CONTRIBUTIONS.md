@@ -2,8 +2,8 @@
 ## Restaurant Hub Project - Web Programming 2
 
 ### Project Team
-- **Mikhael Nabil Salama Rezk** (NEPTUN: IHUTSC)
-- **Szabo Lilla** (NEPTUN: BDCRL0)
+- **Mikhael Nabil Salama Rezk** (NEPTUN: IHUTSC) - Primary Developer & Technical Lead
+- **Szabo Lilla** (NEPTUN: BDCRL0) - Frontend Designer & Documentation Specialist
 
 ### Contribution Summary
 
