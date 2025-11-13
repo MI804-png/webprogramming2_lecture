@@ -57,6 +57,9 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
 // Debug route for admin testing
 Route::get('/debug-admin', function () {
     $user = auth()->user();
+    $adminUserExists = \App\Models\User::where('role', 'admin')->exists();
+    $totalUsers = \App\Models\User::count();
+    
     return response()->json([
         'authenticated' => auth()->check(),
         'user' => $user ? [
@@ -66,11 +69,33 @@ Route::get('/debug-admin', function () {
             'role' => $user->role ?? 'no role set',
         ] : null,
         'is_admin' => $user ? ($user->role === 'admin') : false,
+        'database_info' => [
+            'admin_user_exists' => $adminUserExists,
+            'total_users' => $totalUsers,
+            'admin_users' => \App\Models\User::where('role', 'admin')->pluck('email')->toArray(),
+        ],
         'routes' => [
             'admin_exists' => \Route::has('admin.dashboard'),
             'admin_url' => route('admin.dashboard', [], false),
         ]
     ]);
+});
+
+// Simple admin user creation route for production setup
+Route::get('/create-admin-user', function () {
+    if (\App\Models\User::where('email', 'admin@restaurant.com')->exists()) {
+        return 'Admin user already exists!';
+    }
+    
+    \App\Models\User::create([
+        'name' => 'Admin User',
+        'email' => 'admin@restaurant.com',
+        'password' => bcrypt('password'),
+        'role' => 'admin',
+        'email_verified_at' => now(),
+    ]);
+    
+    return 'Admin user created successfully! Email: admin@restaurant.com, Password: password';
 });
 
 // Temporary route for seeding database on deployment
