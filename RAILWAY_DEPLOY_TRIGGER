@@ -1,0 +1,6 @@
+FORCE_DEPLOYMENT_TIMESTAMP=$(Get-Date -Format "yyyy-MM-dd-HH-mm-ss")
+ADMIN_ROUTE_FIX=true
+RAILWAY_REDEPLOY_TRIGGER=active
+
+This file triggers Railway to redeploy with the latest admin route fixes.
+Created at: 2024-11-13 16:00:00
