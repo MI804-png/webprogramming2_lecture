@@ -1,13 +1,16 @@
-FORCE_DEPLOYMENT_TIMESTAMP=2025-11-14-14-15-00
+FORCE_DEPLOYMENT_TIMESTAMP=2025-11-14-15-30-00
 ADMIN_FUNCTIONALITY_COMPLETE=true
 PROFILE_SETTINGS_FIXED=true
 RESTAURANT_CREATION_FIXED=true
 DATABASE_SCHEMA_UPDATED=true
 RAILWAY_REDEPLOY_TRIGGER=active
+ROUTES_FIXED=true
+MESSAGE_NAVIGATION_FIXED=true
 
 This file triggers Railway to redeploy with all admin functionality restored.
 - Fixed authentication and routing
 - Restored admin panels (Add Restaurant, Profile, Settings)
 - Fixed database schema and server-side rendering issues
+- Fixed route conflicts and message navigation
 - All features tested and working locally
-Created at: 2025-11-14 14:15:00
+Created at: 2025-11-14 15:30:00
