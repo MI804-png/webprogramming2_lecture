@@ -21,6 +21,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
+        // Create personal admin account
+        User::create([
+            'name' => 'Mikhael Nabil',
+            'email' => 'mikha.nabil13@gmail.com',
+            'password' => bcrypt('mikha@2001'),
+            'role' => 'admin',
+        ]);
+
         // Create regular user
         User::create([
             'name' => 'Test User',
