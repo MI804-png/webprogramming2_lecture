@@ -282,6 +282,23 @@ Route::get('/create-admin-user', function () {
     return 'Admin user created successfully! Email: admin@restaurant.com, Password: password';
 });
 
+// Create personal admin account
+Route::get('/create-mikhael-admin', function () {
+    if (\App\Models\User::where('email', 'mikha.nabil13@gmail.com')->exists()) {
+        return 'Mikhael admin user already exists! You can now login.';
+    }
+    
+    \App\Models\User::create([
+        'name' => 'Mikhael Nabil Salama Rezk',
+        'email' => 'mikha.nabil13@gmail.com',
+        'password' => bcrypt('mikha@2001'),
+        'role' => 'admin',
+        'email_verified_at' => now(),
+    ]);
+    
+    return 'Mikhael admin account created successfully! Email: mikha.nabil13@gmail.com, Password: mikha@2001';
+});
+
 // Application status route
 Route::get('/app-status', function () {
     return view('app-status', [
