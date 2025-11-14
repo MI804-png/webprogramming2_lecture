@@ -11,16 +11,33 @@
  */
 
 import AppLayoutTemplate from '@/layouts/app/app-sidebar-layout';
+import DashboardWelcome from '@/components/dashboard-welcome';
 import { type BreadcrumbItem } from '@/types';
 import { type ReactNode } from 'react';
+import { usePage } from '@inertiajs/react';
 
 interface AppLayoutProps {
     children: ReactNode;
     breadcrumbs?: BreadcrumbItem[];
+    showDashboardWelcome?: boolean;
 }
 
-export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => (
-    <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
-        {children}
-    </AppLayoutTemplate>
-);
+export default ({ children, breadcrumbs, showDashboardWelcome = true, ...props }: AppLayoutProps) => {
+    const { props: pageProps } = usePage<{
+        auth: {user: any}
+    }>();
+
+    return (
+        <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
+            {/* Show dashboard welcome on authenticated pages */}
+            {pageProps.auth.user && showDashboardWelcome && (
+                <div className="p-6 pb-0">
+                    <DashboardWelcome />
+                </div>
+            )}
+            <div className={pageProps.auth.user ? "p-6 pt-0" : "p-6"}>
+                {children}
+            </div>
+        </AppLayoutTemplate>
+    );
+};

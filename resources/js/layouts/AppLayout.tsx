@@ -76,14 +76,28 @@ export default function AppLayout({
                                     Statistics
                                 </Link>
                             </div>
-                        </div>
-
-                        <div className="hidden sm:flex sm:items-center sm:ml-6">
+                        </div>                        <div className="hidden sm:flex sm:items-center sm:ml-6">
                             {auth.user ? (
                                 <div className="flex items-center space-x-4">
                                     <span className="text-sm text-gray-700">
                                         Hello, {auth.user.name}
-                                    </span>                                    <button
+                                    </span>
+                                    
+                                    <Link 
+                                        href="/settings/profile" 
+                                        className="text-sm text-gray-500 hover:text-gray-700"
+                                    >
+                                        Profile
+                                    </Link>
+                                    
+                                    <Link 
+                                        href="/settings" 
+                                        className="text-sm text-gray-500 hover:text-gray-700"
+                                    >
+                                        Settings
+                                    </Link>
+                                    
+                                    <button
                                         onClick={() => router.post('/logout')}
                                         className="text-sm text-gray-500 hover:text-gray-700 bg-transparent border-0 p-0 cursor-pointer"
                                     >

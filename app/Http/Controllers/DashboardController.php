@@ -16,6 +16,11 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         
+        // Check if user is authenticated
+        if (!$user) {
+            return redirect()->route('login');
+        }
+        
         // Get user-specific stats
         $userStats = [
             'total_restaurants' => Restaurant::count(),
@@ -77,8 +82,14 @@ class DashboardController extends Controller
 
     public function admin()
     {
-        // Only allow admin users
-        if (auth()->user()->role !== 'admin') {
+        $user = auth()->user();
+        
+        // Check if user is authenticated and is admin
+        if (!$user) {
+            return redirect()->route('login');
+        }
+        
+        if ($user->role !== 'admin') {
             abort(403, 'Access denied');
         }
 

@@ -4,12 +4,13 @@
 - **Mikhael Nabil Salama Rezk** (NEPTUN: IHUTSC)
 - **Szabo Lilla** (NEPTUN: BDCRL0)
 
-## 🔧 CSRF Fixes Applied
+## 🔧 CSRF Fixes Applied - LATEST UPDATE
 
-### 1. ✅ **Enhanced CSRF Token Configuration**
-- Updated `app.tsx` to handle CSRF tokens in both headers AND form data
-- Added Inertia router event handler to automatically include tokens
-- Configured Axios with proper CSRF headers
+### 1. ✅ **Advanced CSRF Token Management**
+- **Dynamic Token Refresh**: Added `/csrf-token` endpoint for real-time token updates
+- **Axios Interceptor**: Automatic 419 error handling with token refresh and request retry
+- **Enhanced Error Recovery**: Graceful handling of CSRF mismatches
+- **Inertia Integration**: Comprehensive token inclusion in all non-GET requests
 
 ### 2. ✅ **Fixed Authentication Forms**
 - **Login Form**: Converted from action-based to `useForm` hook
@@ -21,12 +22,12 @@
 - **User Menu**: Updated logout to use `router.post('/logout')`
 - Removed problematic Link components with method="post"
 
-### 4. ✅ **Session Configuration**
-- Changed session driver from database to file
-- Added explicit session security settings:
-  - `SESSION_SECURE_COOKIE=false` (for localhost HTTP)
-  - `SESSION_SAME_SITE=lax`
-- Cleared all configuration caches
+### 4. ✅ **Enhanced Session Configuration**
+- **Extended Session Lifetime**: Increased from 120 to 1440 minutes (24 hours)
+- **Optimized Session Storage**: File-based sessions with proper directory permissions
+- **Local Development Settings**: `SESSION_DOMAIN=localhost` for better compatibility
+- **Security Settings**: `SESSION_SAME_SITE=lax` with proper CSRF protection
+- **Cache Management**: Comprehensive clearing of config, route, view, and session caches
 
 ### 5. ✅ **Test User Account Created**
 - Email: `test@test.com`

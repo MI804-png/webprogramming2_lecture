@@ -62,6 +62,10 @@ class RestaurantController extends Controller
             'image_url' => 'nullable|url',
         ]);
 
+        // Set default values for fields that can't be null
+        $validated['rating'] = $validated['rating'] ?? 0;
+        $validated['is_active'] = $validated['is_active'] ?? true;
+
         $restaurant = Restaurant::create($validated);
 
         return redirect()->route('restaurants.index')
